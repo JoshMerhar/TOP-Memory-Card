@@ -1,5 +1,5 @@
 import { useState } from 'react';
 
-export default function Card({ cardPic, cardInfo }) {
+export default function Card({ cards, setCards }) {
 
 }
