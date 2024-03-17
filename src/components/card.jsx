@@ -1,5 +1,10 @@
-import { useState } from 'react';
+export default function Card({ id, imageURL, onClick }) {
 
-export default function Card({ cards, setCards }) {
-
+    return (
+      <>
+        <div className="card" id={id} onClick={onClick}>
+          <img className="card-pic" src={imageURL}></img>
+        </div>
+      </>
+    )
 }

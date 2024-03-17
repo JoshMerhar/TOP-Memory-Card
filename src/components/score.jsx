@@ -1,14 +1,6 @@
 import { useState } from 'react';
 
-export default function Scoreboard({ score, setScore }) {
-    const [highScore, setHighScore] = useState(1);
-    
-    const updateHighScore = () => {
-        let currentHighScore = 0;
-        if (score >= currentHighScore) {
-            setHighScore(currentHighScore);
-        }
-    }
+export default function Scoreboard({ score, highScore }) {
 
     return (
       <>
