@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Card from './card'
 
-export default function Gameboard({ cats, score, setScore, highScore, setHighScore }) {
+export default function Gameboard({ cats, score, setScore, highScore, setHighScore, shuffleCards }) {
 
   const [guessedCards, setGuessedCards] = useState([]);
 
@@ -22,6 +22,7 @@ export default function Gameboard({ cats, score, setScore, highScore, setHighSco
       ])
       updateHighScore();
     }
+    shuffleCards();
   }
 
   const updateHighScore = () => {

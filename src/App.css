@@ -9,6 +9,42 @@ body {
 .container {
   margin: auto;
   max-width: 1440px;
+  padding: 1rem;
+}
+
+.scoreboard {
+  position: absolute;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: .25rem;
+  font-size: 24px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.new-game-button {
+  font-size: 28px;
+  font-weight: bold;
+  padding: .1rem 2rem;
+  border-style: none;
+  background-color: lightgreen;
+  transition: .15s;
+  border-radius: 8px;
+}
+
+.new-game-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .gameboard {
@@ -24,6 +60,13 @@ body {
   height: 300px;
   border: 4px solid black;
   border-radius: 10px;
+  transition: .15s;
+  box-shadow: 4px 5px 5px black;
+}
+
+.card:hover {
+  transform: scale(1.08);
+  cursor: pointer;
 }
 
 .card-pic {
