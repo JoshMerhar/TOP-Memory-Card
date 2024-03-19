@@ -1,28 +1,29 @@
 import { useState } from 'react'
 import Card from './card'
 
-export default function Gameboard({ cats, score, setScore, highScore, setHighScore, shuffleCards }) {
+export default function Gameboard({ cats, score, setScore, highScore, setHighScore, shuffleCards, gameOver, setGameOver, setGameLost }) {
 
   const [guessedCards, setGuessedCards] = useState([]);
 
   function checkGuess(id) {
     let alreadyGuessed = false;
     guessedCards.forEach(guess => {
-      if (id === guess) {
+      if (id === guess && !gameOver) {
         alreadyGuessed = true;
-        setScore(0);
+        setGameLost(true);
+        setGameOver(true);
         setGuessedCards([]);
       }
     });
-    if (!alreadyGuessed) {
+    if (!alreadyGuessed && !gameOver) {
       setScore(score => score + 1);
       setGuessedCards([
         ...guessedCards,
         id
       ])
       updateHighScore();
+      shuffleCards();
     }
-    shuffleCards();
   }
 
   const updateHighScore = () => {
