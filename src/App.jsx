@@ -12,10 +12,12 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [gameLost, setGameLost] = useState(false);
+  const [loadingScreen, setLoadingScreen] = useState(false);
 
   async function getCats() {
     const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10&api-key=${API_KEY}`);
     const catsData = await response.json();
+    showLoadingScreen();
     setGameboard([...catsData]);
     setScore(0);
     setGameOver(false);
@@ -47,6 +49,13 @@ function App() {
     setGameboard([...newGameboard]);
   }
 
+  function showLoadingScreen() {
+    setLoadingScreen(true);
+    setTimeout(() => {
+      setLoadingScreen(false);
+    }, 2000);
+  }
+
   return (
     <>
       <div className="container">
@@ -58,6 +67,7 @@ function App() {
           <div className="lose-text" style={{ display: gameLost ? 'block' : 'none' }}>You lost... Click &quot;New Game&quot; to try again</div>
           <button type="button" className="new-game-button" onClick={getCats}>New Game</button>
         </div>
+        <div className="loading-screen" style={{ opacity: loadingScreen ? 1 : 0 }}>LOADING . . .</div>
         <Gameboard 
           cats={gameboard} 
           score={score} 
@@ -68,6 +78,7 @@ function App() {
           gameOver={gameOver}
           setGameOver={setGameOver}
           setGameLost={setGameLost}
+          loadingScreen={loadingScreen}
         />
       </div>
     </>
