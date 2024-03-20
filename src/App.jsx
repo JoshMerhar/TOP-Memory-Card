@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import API_KEY from './utility/api-key'
 import Scoreboard from './components/score'
+import Controller from './components/controller'
 import Gameboard from './components/gameboard'
 import './App.css'
 
@@ -59,14 +60,17 @@ function App() {
   return (
     <>
       <div className="container">
-        <Scoreboard score={score} highScore={highScore} />
-        <div className="game-controls">
-          <div className="new-game-text" style={{ display: (!gameOver && gameboard.length === 0) ? 'block' : 'none' }}>Click &quot;New Game&quot; to begin</div>
-          <div className="rules" style={{ display: (!gameOver && gameboard.length > 0) ? 'block' : 'none' }}>Click each card without selecting the same one twice to win</div>
-          <div className="win-text" style={{ display: gameWon ? 'block' : 'none' }}>You won!</div>
-          <div className="lose-text" style={{ display: gameLost ? 'block' : 'none' }}>You lost... Click &quot;New Game&quot; to try again</div>
-          <button type="button" className="new-game-button" onClick={getCats}>New Game</button>
-        </div>
+        <Scoreboard 
+          score={score} 
+          highScore={highScore} 
+        />
+        <Controller
+          gameOver={gameOver} 
+          gameWon={gameWon}
+          gameLost={gameLost}
+          gameboard={gameboard}
+          handleClick={getCats}
+        />
         <div className="loading-screen" style={{ opacity: loadingScreen ? 1 : 0 }}>LOADING . . .</div>
         <Gameboard 
           cats={gameboard} 
