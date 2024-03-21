@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import API_KEY from './utility/api-key'
 import Scoreboard from './components/score'
 import Controller from './components/controller'
 import Gameboard from './components/gameboard'
@@ -16,7 +15,7 @@ function App() {
   const [loadingScreen, setLoadingScreen] = useState(false);
 
   async function getCats() {
-    const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10&api-key=${API_KEY}`);
+    const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=10`);
     const catsData = await response.json();
     showLoadingScreen();
     setGameboard([...catsData]);
